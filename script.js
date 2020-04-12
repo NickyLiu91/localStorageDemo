@@ -2,34 +2,37 @@ document.addEventListener('DOMContentLoaded', () => {
   var emailInput = document.querySelector("#email");
   var passwordInput = document.querySelector("#password");
   var signUpButton = document.querySelector("#sign-up");
+  var msgDiv = document.querySelector("#msg");
   var userEmailSpan = document.querySelector("#user-email");
   var userPasswordSpan = document.querySelector("#user-password");
 
-  // console.log(emailInput)
-  // console.log(passwordInput)
-  // console.log(signUpButton)
-  // console.log(userEmailSpan)
-  // console.log(userPasswordSpan)
+  // function renderLastRegistered() {
+  //   var email = localStorage.getItem("email");
+  //   var password = localStorage.getItem("password");
+  //
+  //   if (email && password === null) {
+  //       return;
+  //   }
+  //
+  //   userEmailSpan.textContent = email;
+  //   userPasswordSpan.textContent = password;
+  // }
+  //
+  // renderLastRegistered();
 
-  function renderLastRegistered() {
-    var email = localStorage.getItem("email");
-    var password = localStorage.getItem("password");
-
-    if (email && password === null) {
-        return;
-    }
-
-    userEmailSpan.textContent = email;
-    userPasswordSpan.textContent = password;
+  function displayMessage(type, message) {
+    msgDiv.textContent = message;
+    msgDiv.setAttribute("class", type);
   }
-
-  renderLastRegistered();
 
   signUpButton.addEventListener("click", function(event) {
     event.preventDefault();
 
     var email = document.querySelector("#email").value;
+    console.log(email)
     var password = document.querySelector("#password").value;
+    console.log(password)
+
 
     if (email === "") {
         displayMessage("error", "Email cannot be blank");
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localStorage.setItem("email", email);
         localStorage.setItem("password", password);
-        renderLastRegistered();
+        // renderLastRegistered();
     }
   });
 })
