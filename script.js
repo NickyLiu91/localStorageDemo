@@ -6,19 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
   var userEmailSpan = document.querySelector("#user-email");
   var userPasswordSpan = document.querySelector("#user-password");
 
-  // function renderLastRegistered() {
-  //   var email = localStorage.getItem("email");
-  //   var password = localStorage.getItem("password");
-  //
-  //   if (email && password === null) {
-  //       return;
-  //   }
-  //
-  //   userEmailSpan.textContent = email;
-  //   userPasswordSpan.textContent = password;
-  // }
-  //
-  // renderLastRegistered();
+  function renderLastRegistered() {
+    var email = localStorage.getItem("email");
+    console.log(email)
+    var password = localStorage.getItem("password");
+    console.log(password)
+
+    if (email && password === null) {
+        return;
+    }
+
+    userEmailSpan.textContent = email;
+    userPasswordSpan.textContent = password;
+  }
+
+  renderLastRegistered();
 
   function displayMessage(type, message) {
     msgDiv.textContent = message;
@@ -42,8 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         displayMessage("success", "Registered successfully");
 
         localStorage.setItem("email", email);
-        localStorage.setItem("password", password);
-        // renderLastRegistered();
+        console.log(localStorage.getItem("email", email))
+        localStorage.getItem("password", password);
+        console.log(localStorage.getItem("password", password))
+
+        renderLastRegistered();
     }
   });
 })
